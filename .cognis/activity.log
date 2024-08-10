@@ -39,3 +39,4 @@
 2024-06-17T08:08:28  build(rules): trim whitespace in parsed fields
 2024-06-22T15:25:35  docs: clarify usage notes
 2024-07-16T10:42:42  style(core): simplify the walker
+2024-08-10T17:59:49  ci(rules): lower memory on big inputs
