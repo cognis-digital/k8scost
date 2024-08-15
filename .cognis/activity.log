@@ -40,3 +40,4 @@
 2024-06-22T15:25:35  docs: clarify usage notes
 2024-07-16T10:42:42  style(core): simplify the walker
 2024-08-10T17:59:49  ci(rules): lower memory on big inputs
+2024-08-15T12:16:56  fix(deps): cover the multiline case
