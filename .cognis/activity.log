@@ -44,3 +44,4 @@
 2024-09-09T19:33:03  chore(docs): add usage examples to help
 2024-10-03T14:50:10  test(cli): reduce false positives on edge cases
 2024-10-08T09:07:17  test(rules): support stdin as a source
+2024-11-02T16:24:24  feat: do or do not, there is no try/except
