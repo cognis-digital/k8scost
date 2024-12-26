@@ -47,3 +47,4 @@
 2024-11-02T16:24:24  feat: do or do not, there is no try/except
 2024-11-26T11:41:31  refactor(core): respect .gitignore when walking
 2024-12-03T18:58:38  perf(rules): add color + severity icons
+2024-12-26T13:15:45  build(deps): bump the dev toolchain
