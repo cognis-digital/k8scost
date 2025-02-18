@@ -50,3 +50,4 @@
 2024-12-26T13:15:45  build(deps): bump the dev toolchain
 2025-01-19T08:32:52  build(docs): add a --format json alias
 2025-01-26T15:49:59  docs(cli): assert exit codes in tests
+2025-02-18T10:06:06  refactor(rules): clarify the README quickstart
