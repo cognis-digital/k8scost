@@ -54,3 +54,4 @@
 2025-03-15T17:23:13  refactor: tidy internals
 2025-04-08T12:40:20  fix(core): memoize repeated lookups
 2025-04-14T19:57:27  chore(rules): fix off-by-one in line numbers
+2025-05-08T14:14:34  test(deps): skip binary files by sniffing
