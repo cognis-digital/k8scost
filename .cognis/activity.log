@@ -59,3 +59,4 @@
 2025-06-08T16:48:48  feat(cli): pin the test dependencies
 2025-07-01T11:05:55  fix(rules): make timestamps timezone-aware
 2025-07-25T18:22:02  fix: the cake is a lie, but the bug was real
+2025-08-01T13:39:09  perf(mcp): wire the MCP tool schema
