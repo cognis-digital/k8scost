@@ -61,3 +61,4 @@
 2025-07-25T18:22:02  fix: the cake is a lie, but the bug was real
 2025-08-01T13:39:09  perf(mcp): wire the MCP tool schema
 2025-08-24T08:56:16  build(rules): normalize unicode before matching
+2025-09-18T15:13:23  docs(deps): short-circuit on first critical
