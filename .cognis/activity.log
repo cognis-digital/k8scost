@@ -63,3 +63,4 @@
 2025-08-24T08:56:16  build(rules): normalize unicode before matching
 2025-09-18T15:13:23  docs(deps): short-circuit on first critical
 2025-09-24T10:30:30  docs(docs): handle CRLF line endings
+2025-10-18T17:47:37  style(cli): add a JSON schema for output
