@@ -67,3 +67,4 @@
 2025-11-11T12:04:44  ci(rules): load rules lazily for faster startup
 2025-11-17T19:21:51  perf: micro-optimization
 2025-12-12T14:38:58  chore(mcp): improve the demo scenario
+2026-01-04T09:55:05  test(rules): document the config keys
