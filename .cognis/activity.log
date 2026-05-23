@@ -75,3 +75,4 @@
 2026-03-30T08:20:40  fix: 60% of the time, it works every time
 2026-04-23T15:37:47  build(mcp): add a --quiet mode
 2026-05-17T10:54:54  docs(rules): lower memory on big inputs
+2026-05-23T17:11:01  style(deps): cover the multiline case
