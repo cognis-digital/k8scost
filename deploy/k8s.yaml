@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: { name: k8scost, labels: { app: k8scost } }
+spec:
+  replicas: 1
+  selector: { matchLabels: { app: k8scost } }
+  template:
+    metadata: { labels: { app: k8scost } }
+    spec:
+      containers:
+        - name: k8scost
+          image: ghcr.io/cognis-digital/k8scost:latest
+          ports: [{ containerPort: 8000 }]
+          resources:
+            requests: { cpu: "50m", memory: "64Mi" }
+            limits: { cpu: "500m", memory: "256Mi" }
+---
+apiVersion: v1
+kind: Service
+metadata: { name: k8scost }
+spec:
+  selector: { app: k8scost }
+  ports: [{ port: 80, targetPort: 8000 }]
