@@ -1,0 +1,54 @@
+{
+  "workloads": [
+    {
+      "name": "api",
+      "namespace": "shop",
+      "kind": "Deployment",
+      "replicas": 3,
+      "containers": [
+        {
+          "name": "api",
+          "cpu_request": "500m",
+          "cpu_limit": "1000m",
+          "mem_request": "512Mi",
+          "mem_limit": "512Mi",
+          "cpu_usage": "80m",
+          "mem_usage": "180Mi"
+        }
+      ]
+    },
+    {
+      "name": "worker",
+      "namespace": "shop",
+      "kind": "Deployment",
+      "replicas": 2,
+      "containers": [
+        {
+          "name": "worker",
+          "cpu_request": "250m",
+          "cpu_limit": "500m",
+          "mem_request": "256Mi",
+          "mem_limit": "256Mi",
+          "cpu_usage": "210m",
+          "mem_usage": "410Mi"
+        }
+      ]
+    },
+    {
+      "name": "cache",
+      "namespace": "shop",
+      "kind": "Deployment",
+      "replicas": 1,
+      "containers": [
+        {
+          "name": "redis",
+          "cpu_request": "100m",
+          "cpu_limit": "200m",
+          "mem_request": "1024Mi",
+          "cpu_usage": "40m",
+          "mem_usage": "300Mi"
+        }
+      ]
+    }
+  ]
+}
