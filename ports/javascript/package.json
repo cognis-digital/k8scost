@@ -1,0 +1,10 @@
+{
+  "name": "@cognis/k8scost",
+  "version": "0.2.0",
+  "description": "JavaScript port of k8scost (Cognis Neural Suite)",
+  "bin": {
+    "k8scost": "index.js"
+  },
+  "license": "LicenseRef-COCL-1.0",
+  "type": "module"
+}
