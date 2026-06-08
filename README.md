@@ -36,8 +36,11 @@ k8s FinOps
 <a name="features"></a>
 ## Features
 
-- ✅ Scan
-- ✅ To Json
+- ✅ Parse Cpu
+- ✅ Parse Mem
+- ✅ Parse Workloads
+- ✅ Analyze
+- ✅ Summarize
 - ✅ Runs on Linux/macOS/Windows · Docker · devcontainer
 - ✅ Ports in Python, JavaScript, Go, and Rust (`ports/`)
 
