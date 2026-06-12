@@ -16,7 +16,7 @@
 </div>
 
 ```bash
-pip install cognis-k8scost
+pip install "git+https://github.com/cognis-digital/k8scost.git"
 k8scost scan .            # → prioritized findings in seconds
 ```
 
@@ -50,7 +50,7 @@ k8s FinOps
 ## Quick start
 
 ```bash
-pip install cognis-k8scost
+pip install "git+https://github.com/cognis-digital/k8scost.git"
 k8scost --version
 k8scost scan .                       # scan current project
 k8scost scan . --format json         # machine-readable
