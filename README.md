@@ -20,6 +20,32 @@ pip install cognis-k8scost
 k8scost scan .            # → prioritized findings in seconds
 ```
 
+## Usage — step by step
+
+1. **Install** (Python 3.8+, stdlib only):
+   ```bash
+   pip install k8scost
+   ```
+   Input is a workload JSON file (no Prometheus or cluster access required).
+2. **Analyze workloads** for cost and rightsizing recommendations:
+   ```bash
+   k8scost analyze workloads.json
+   ```
+3. **Override pricing and get detailed per-container advice**:
+   ```bash
+   k8scost --cpu-price 0.031 --mem-price 0.004 analyze workloads.json --advise
+   ```
+4. **Read the output as JSON** (or stream workloads via stdin with `-`):
+   ```bash
+   kubectl get deploy -A -o json | k8scost --format json analyze - | jq '.summary'
+   ```
+   JSON includes a `summary` (total/recommended cost, potential savings, savings_pct) and per-workload `workloads[]`.
+5. **Use in CI** — surface monthly savings on every infra change:
+   ```bash
+   k8scost --format json analyze workloads.json | jq '.summary.potential_monthly_savings'
+   ```
+
+
 ## Contents
 
 - [Why k8scost?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
