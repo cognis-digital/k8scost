@@ -20,6 +20,12 @@ pip install "git+https://github.com/cognis-digital/k8scost.git"
 k8scost scan .            # → prioritized findings in seconds
 ```
 
+<!-- cognis:layman:start -->
+## What is this?
+
+k8scost helps you understand how much money your Kubernetes applications are actually costing you every month and where you are over-paying. You point it at your workload definitions and it tells you which containers are requesting far more CPU or memory than they use, what that waste costs in dollars, and exactly what to change to cut the bill. It is aimed at developers and platform engineers who run apps on Kubernetes and want straightforward savings advice without installing a complex monitoring system like Prometheus.
+<!-- cognis:layman:end -->
+
 ## Contents
 
 - [Why k8scost?](#why) · [Features](#features) · [Quick start](#quick-start) · [Example](#example) · [Architecture](#architecture) · [AI stack](#ai-stack) · [How it compares](#how-it-compares) · [Integrations](#integrations) · [Install anywhere](#install-anywhere) · [Related](#related) · [Contributing](#contributing)
@@ -47,6 +53,42 @@ k8s FinOps
 <div align="right"><a href="#top">↑ back to top</a></div>
 
 <a name="quick-start"></a>
+<!-- cognis:install:start -->
+## Install
+
+`k8scost` is source-available (not published to PyPI) — every method below installs
+straight from GitHub. Pick whichever you prefer; the one-line scripts auto-detect
+the best tool available on your machine.
+
+**One-liner (Linux / macOS):**
+```sh
+curl -fsSL https://raw.githubusercontent.com/cognis-digital/k8scost/HEAD/install.sh | sh
+```
+
+**One-liner (Windows PowerShell):**
+```powershell
+irm https://raw.githubusercontent.com/cognis-digital/k8scost/HEAD/install.ps1 | iex
+```
+
+**Or install manually — any one of:**
+```sh
+pipx install "git+https://github.com/cognis-digital/k8scost.git"     # isolated (recommended)
+uv tool install "git+https://github.com/cognis-digital/k8scost.git"  # uv
+pip install "git+https://github.com/cognis-digital/k8scost.git"      # pip
+```
+
+**From source:**
+```sh
+git clone https://github.com/cognis-digital/k8scost.git
+cd k8scost && pip install .
+```
+
+Then run:
+```sh
+k8scost --help
+```
+<!-- cognis:install:end -->
+
 ## Quick start
 
 ```bash
