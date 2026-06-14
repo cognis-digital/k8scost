@@ -38,13 +38,16 @@ def parse_cpu(v: Any) -> float:
     s = str(v).strip()
     if not s:
         return 0.0
-    if s.endswith("m"):
-        return float(s[:-1])
-    if s.endswith("n"):  # nanocores
-        return float(s[:-1]) / 1e6
-    if s.endswith("u"):  # microcores
-        return float(s[:-1]) / 1e3
-    return float(s) * 1000.0
+    try:
+        if s.endswith("m"):
+            return float(s[:-1])
+        if s.endswith("n"):  # nanocores
+            return float(s[:-1]) / 1e6
+        if s.endswith("u"):  # microcores
+            return float(s[:-1]) / 1e3
+        return float(s) * 1000.0
+    except ValueError:
+        raise CostError(f"invalid CPU quantity: {v!r}")
 
 
 _MEM_MULT = {
@@ -62,11 +65,14 @@ def parse_mem(v: Any) -> float:
     s = str(v).strip()
     if not s:
         return 0.0
-    for suf in ("Ki", "Mi", "Gi", "Ti", "K", "M", "G", "T"):
-        if s.endswith(suf):
-            return float(s[: -len(suf)]) * _MEM_MULT[suf] / (1024 ** 2)
-    # plain bytes
-    return float(s) / (1024 ** 2)
+    try:
+        for suf in ("Ki", "Mi", "Gi", "Ti", "K", "M", "G", "T"):
+            if s.endswith(suf):
+                return float(s[: -len(suf)]) * _MEM_MULT[suf] / (1024 ** 2)
+        # plain bytes
+        return float(s) / (1024 ** 2)
+    except ValueError:
+        raise CostError(f"invalid memory quantity: {v!r}")
 
 
 # ---------------------------------------------------------------------------
@@ -182,6 +188,9 @@ def parse_workloads(data: Any) -> list[Workload]:
     else:
         raise CostError("input must be a JSON object or array")
 
+    if not isinstance(items, list):
+        raise CostError("'workloads'/'items' must be a JSON array")
+
     out: list[Workload] = []
     for it in items:
         if not isinstance(it, dict):
@@ -194,11 +203,18 @@ def parse_workloads(data: Any) -> list[Workload]:
             containers = [_container_from_simple(c) for c in it.get("containers", []) or []]
             if not containers:
                 raise CostError(f"workload {it.get('name','?')!r} has no containers")
+            raw_replicas = it.get("replicas", 1)
+            try:
+                replicas = int(raw_replicas or 1)
+            except (TypeError, ValueError):
+                raise CostError(
+                    f"workload {it.get('name','?')!r}: 'replicas' must be an integer, got {raw_replicas!r}"
+                )
             out.append(Workload(
                 name=it.get("name", "workload"),
                 namespace=it.get("namespace", "default"),
                 kind=it.get("kind", "Deployment"),
-                replicas=int(it.get("replicas", 1) or 1),
+                replicas=replicas,
                 containers=containers,
             ))
     if not out:

@@ -78,6 +78,14 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Optional[list[str]] = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
+
+    if args.cpu_price < 0:
+        print("error: --cpu-price must be >= 0", file=sys.stderr)
+        return 2
+    if args.mem_price < 0:
+        print("error: --mem-price must be >= 0", file=sys.stderr)
+        return 2
+
     prices = PriceSheet(cpu_core_hour=args.cpu_price, mem_gib_hour=args.mem_price)
 
     try:
@@ -92,6 +100,9 @@ def main(argv: Optional[list[str]] = None) -> int:
         summ = summarize(reports)
     except CostError as e:
         print(f"error: {e}", file=sys.stderr)
+        return 1
+    except Exception as e:  # noqa: BLE001
+        print(f"error: unexpected failure: {e}", file=sys.stderr)
         return 1
 
     if args.format == "json":
