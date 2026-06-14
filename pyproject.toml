@@ -34,3 +34,6 @@ k8scost = "k8scost.cli:main"
 
 [tool.hatch.build.targets.wheel]
 packages = ["k8scost"]
+
+[tool.hatch.metadata]
+allow-direct-references = true
