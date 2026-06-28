@@ -1,0 +1,21 @@
+$ k8scost-emit --help
+
+usage: k8scost [-h] [--version] [--format {table,json}]
+               [--cpu-price CPU_PRICE] [--mem-price MEM_PRICE]
+               {analyze} ...
+
+Kubernetes cost & rightsizing advisor (no Prometheus required).
+
+positional arguments:
+  {analyze}
+    analyze             cost + rightsizing report for workloads
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)
+  --cpu-price CPU_PRICE
+                        $ per vCPU-hour
+  --mem-price MEM_PRICE
+                        $ per GiB-hour

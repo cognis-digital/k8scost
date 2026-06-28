@@ -1,0 +1,3 @@
+$ k8scost-emit --version
+
+k8scost 0.1.0

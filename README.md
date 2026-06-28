@@ -20,6 +20,63 @@ pip install cognis-k8scost
 k8scost scan .            # → prioritized findings in seconds
 ```
 
+
+<!-- cognis:example:start -->
+## 🔎 Example output
+
+Real, reproducible output from the tool — runs offline:
+
+```console
+$ k8scost-emit --version
+k8scost 0.1.0
+```
+
+```console
+$ k8scost-emit --help
+usage: k8scost [-h] [--version] [--format {table,json}]
+               [--cpu-price CPU_PRICE] [--mem-price MEM_PRICE]
+               {analyze} ...
+
+Kubernetes cost & rightsizing advisor (no Prometheus required).
+
+positional arguments:
+  {analyze}
+    analyze             cost + rightsizing report for workloads
+
+options:
+  -h, --help            show this help message and exit
+  --version             show program's version number and exit
+  --format {table,json}
+                        output format (default: table)
+  --cpu-price CPU_PRICE
+                        $ per vCPU-hour
+  --mem-price MEM_PRICE
+                        $ per GiB-hour
+```
+
+> Blocks above are real `k8scost` output — reproduce them from a clone.
+
+**Sample result format** _(illustrative values — run on your own data for real findings):_
+
+```
+{
+"findings": [
+    {
+        "id": "1234567890",
+        "title": "Potential Kubernetes Cluster Compromise",
+        "description": "A suspicious pod was detected in a Kubernetes cluster.",
+        "labels": ["kubernetes", "compromise"],
+        "observables": [
+            {"type": "ip", "value": "192.168.1.100"},
+            {"type": "domain", "value": "example.com"}
+        ]
+    }
+]
+}
+```
+
+<!-- cognis:example:end -->
+
 ## Usage — step by step
 
 1. **Install** (Python 3.8+, stdlib only):
